@@ -20,7 +20,6 @@ public:
             }
 
         }
-        nums=modnums;
-        return nums;
+        return modnums;
     }
 };
