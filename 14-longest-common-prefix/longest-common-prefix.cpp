@@ -12,3 +12,17 @@ public:
         
     }
 };
+//
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string res="";
+        string temp=strs[0];
+        for(string s: strs){
+            while(s.find(temp)!=0)
+                temp=temp.substr(0,temp.length()-1);
+        }
+        return temp;
+        }
+};
+//
