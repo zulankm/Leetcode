@@ -1,32 +1,25 @@
-
-       /* int ans;
-        for(int i = 0;i < nums.size(); i++)
-        {
-            for(int j = i+1;j < nums.size();j++)
-            {
-                if(nums[i]==nums[j])
-                {
-                    ans=nums[i];
-                }
-            }
-        }
-            return ans;
-            */
-          class Solution {
+class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        int fast = 0, slow = 0;
-        while(true){
-            fast = nums[nums[fast]];
-            slow = nums[slow];
-            if(fast == slow)break;
-        }
-        slow  = 0;
-        while(fast != slow){
-            slow = nums[slow];
-            fast = nums[fast];
-        }
-        return fast;
+        
+	if (nums.size() > 1)
+	{
+		int slow = nums[0];
+		int fast = nums[nums[0]];
+		while (slow != fast)
+		{
+			slow = nums[slow];
+			fast = nums[nums[fast]];
+		}
+
+		fast = 0;
+		while (fast != slow)
+		{
+			fast = nums[fast];
+			slow = nums[slow];
+		}
+		return slow;
+	}
+	return -1;
     }
 };
-//Floyd Cycle finding algo or Hare Tortoise algo **IMP
